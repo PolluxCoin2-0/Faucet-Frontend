@@ -17,7 +17,7 @@ const Dropdown = () => {
   const options = ["Give me 50 POX"];
 
   return (
-    <div className="w-64 relative">
+    <div className="w-full relative">
       <button
         onClick={toggleDropdown}
         className="bg-white text-gray-700 w-full py-2 px-4 rounded-md flex justify-between items-center border border-gray-700"
@@ -27,12 +27,12 @@ const Dropdown = () => {
       </button>
 
       {isOpen && (
-        <ul className="absolute top-10 left-0 w-full bg-white rounded-full border border-gray-700 shadow-lg">
+        <ul className="absolute top-10 left-0 w-full bg-white rounded-md border border-gray-700 shadow-lg">
           {options.map((option, index) => (
             <li
               key={index}
               onClick={() => handleOptionClick(option)}
-              className="py-1 px-4 cursor-pointer hover:bg-blue-600 hover:rounded-full text-black"
+              className="py-1 px-4 cursor-pointer hover:bg-blue-600 hover:rounded-md text-black"
             >
               {option}
             </li>
