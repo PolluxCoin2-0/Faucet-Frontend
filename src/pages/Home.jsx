@@ -7,6 +7,7 @@ import { GiGreekTemple } from "react-icons/gi";
 import NotARobot from "../component/NotARobot";
 import { Link } from "react-router-dom";
 import BackgroundVideo from "../component/BackgroundVideo";
+import Logo from "../assets/faucet.png";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
@@ -29,10 +30,12 @@ const Home = () => {
       <BackgroundVideo />
 
       <div className="relative z-10 bg-[#0C0C0C] bg-opacity-50 w-full max-w-4xl h-auto p-8 rounded-3xl border-[1px] border-white border-opacity-15">
+        <div className='flex flex-row justify-center items-center space-x-2'>
+        <img src={Logo} alt="faucet-pollux" className='h-8 img-yellow-filter -mt-3' />
         <p className="text-[#D89B24] text-3xl font-bold mb-4 text-center">
           Pox Chain Faucet
         </p>
-
+        </div>
         <div className="w-full">
           <input
             id="inputField"
