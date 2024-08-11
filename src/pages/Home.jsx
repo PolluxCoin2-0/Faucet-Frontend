@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-black w-full min-h-screen flex items-center justify-center py-12 ">
+    <div className="bg-black w-full min-h-screen flex items-center justify-center py-12 px-4 md:px-6 lg:px-0">
       <div className="bg-[#0C0C0C] w-full max-w-4xl h-auto p-8 rounded-3xl border-[1px] border-white border-opacity-15">
         <p className="text-[#D89B24] text-3xl font-bold mb-4 text-center">
           Pox Chain Faucet
