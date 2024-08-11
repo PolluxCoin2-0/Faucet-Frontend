@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Dropdown from "../component/Dropdown";
+import { useState } from 'react';
 import { HiMiniWifi } from "react-icons/hi2";
 import { RiStackFill } from "react-icons/ri";
 import { FaHeart } from "react-icons/fa";
@@ -8,10 +7,14 @@ import NotARobot from "../component/NotARobot";
 import { Link } from "react-router-dom";
 import BackgroundVideo from "../component/BackgroundVideo";
 import Logo from "../assets/faucet.png";
+import { submitTokenAndAmount } from '../utils/axios';
+import { RxCross2 } from 'react-icons/rx';
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [hash, setHash] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -24,6 +27,15 @@ const Home = () => {
       setError("");
     }
   };
+
+  const handleSubmit=async()=>{
+    const apiData = await submitTokenAndAmount(inputValue);
+    setHash(apiData);
+    setInputValue("");
+    if(apiData){
+      setIsShowModal(!isShowModal);
+    }
+  }
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center py-12 px-4 md:px-6 lg:px-0">
@@ -52,7 +64,9 @@ const Home = () => {
         </div>
 
         <div className="mt-6 w-full">
-          <Dropdown />
+        <p className="bg-white text-gray-700 font-medium w-full py-2 px-4 rounded-md flex justify-between items-center border border-gray-700">
+        Give me 5 POX
+      </p>
         </div>
 
         <div className="bg-white mt-8 w-full max-w-4xl py-3 rounded-md flex flex-wrap justify-around p-4">
@@ -83,6 +97,7 @@ const Home = () => {
 
         <div className="mt-6 text-center">
           <button
+          onClick={handleSubmit}
             type="button"
             className="px-6 py-2 bg-[#4AA5F0] text-white rounded-md font-semibold"
           >
@@ -113,6 +128,27 @@ const Home = () => {
           </p>
         </div>
       </div>
+
+        {isShowModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white rounded-lg shadow-lg p-6 w-96 relative">
+              <button
+              onClick={()=>setIsShowModal(!isShowModal)}
+                className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              >
+                <RxCross2 size={24} />
+              </button>
+              <p className="text-2xl font-bold mb-4 text-center">Congratulations!</p>
+              <p className="text-lg mb-4 text-center">Wow 😱! You got 5 POX</p>
+              <a
+                href={`https://testnet.poxscan.io/transactions-detail/${hash}`}
+                className="block text-center text-blue-500 hover:underline"
+              >
+                Click here for more details.
+              </a>
+            </div>
+          </div>
+        )}
     </div>
   );
 };
