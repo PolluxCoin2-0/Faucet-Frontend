@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import Dropdown from "../component/Dropdown";
 import { HiMiniWifi } from "react-icons/hi2";
 import { RiStackFill } from "react-icons/ri";
@@ -6,6 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import { GiGreekTemple } from "react-icons/gi";
 import NotARobot from "../component/NotARobot";
 import { Link } from "react-router-dom";
+import BackgroundVideo from "../component/BackgroundVideo";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
@@ -24,8 +25,10 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-black w-full min-h-screen flex items-center justify-center py-12 px-4 md:px-6 lg:px-0">
-      <div className="bg-[#0C0C0C] w-full max-w-4xl h-auto p-8 rounded-3xl border-[1px] border-white border-opacity-15">
+    <div className="relative w-full min-h-screen flex items-center justify-center py-12 px-4 md:px-6 lg:px-0">
+      <BackgroundVideo />
+
+      <div className="relative z-10 bg-[#0C0C0C] bg-opacity-50 w-full max-w-4xl h-auto p-8 rounded-3xl border-[1px] border-white border-opacity-15">
         <p className="text-[#D89B24] text-3xl font-bold mb-4 text-center">
           Pox Chain Faucet
         </p>
